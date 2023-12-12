@@ -62,6 +62,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flare_flutter",
+      "rootUri": "file:///C:/Users/USER/AppData/Local/Pub/Cache/hosted/pub.dev/flare_flutter-3.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter",
       "rootUri": "file:///C:/flutter/packages/flutter",
       "packageUri": "lib/",
@@ -140,6 +146,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "nested",
+      "rootUri": "file:///C:/Users/USER/AppData/Local/Pub/Cache/hosted/pub.dev/nested-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "path",
       "rootUri": "file:///C:/Users/USER/AppData/Local/Pub/Cache/hosted/pub.dev/path-1.8.3",
       "packageUri": "lib/",
@@ -180,6 +192,12 @@
       "rootUri": "file:///C:/Users/USER/AppData/Local/Pub/Cache/hosted/pub.dev/process-4.2.4",
       "packageUri": "lib/",
       "languageVersion": "2.14"
+    },
+    {
+      "name": "provider",
+      "rootUri": "file:///C:/Users/USER/AppData/Local/Pub/Cache/hosted/pub.dev/provider-6.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "shared_preferences",
@@ -314,7 +332,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-12-08T16:42:46.197377Z",
+  "generated": "2023-12-11T03:53:42.660672Z",
   "generator": "pub",
   "generatorVersion": "3.1.0"
 }

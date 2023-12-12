@@ -4,22 +4,22 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-    email: {
+    account: {
         type: String,
         lowercase: true,
-        required: [true, "userName can't be empty"],
-        // @ts-ignore
+        required: [true, "Account can't be empty"],
         match: [
-            /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/,
-            "userName format is not correct",
+            /^[a-zA-Z0-9]+$/,
+            "Account can only contain letters and numbers",
         ],
         unique: true,
     },
     password: {
         type: String,
-        required: [true, "password is required"],
+        required: [true, "Password is required"],
     },
-},{timestamps:true});
+}, { timestamps: true });
+
 
 
 // used while encrypting user entered password

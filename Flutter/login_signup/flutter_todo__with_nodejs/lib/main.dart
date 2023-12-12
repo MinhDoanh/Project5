@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo_app/dashboard.dart';
+import 'package:flutter_todo_app/provider/account.dart';
+import 'package:flutter_todo_app/provider/appState.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'loginPage.dart';
 
@@ -18,18 +21,23 @@ class MyApp extends StatelessWidget {
     @required this.token,
     Key? key,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Flutter Demo',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primaryColor: Colors.black,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        home: (token != null && JwtDecoder.isExpired(token) == false)
-            ? Dashboard(token: token)
-            : SignInPage());
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<AccountProvider>(create: (_) => AccountProvider()),
+        ChangeNotifierProvider<AppStateProvider>(create: (_) => AppStateProvider())
+      ],
+      child: MaterialApp(
+          title: 'Flutter Demo',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primaryColor: Colors.black,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
+          home: (token != null && JwtDecoder.isExpired(token) == false)
+              ? Dashboard(token: token)
+              : SignInPage()),
+    );
   }
 }

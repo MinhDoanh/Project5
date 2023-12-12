@@ -2,12 +2,12 @@ const UserServices = require('../services/user.service');
 exports.register = async (req, res, next) => {
     try {
         console.log("---req body---", req.body);
-        const { email, password } = req.body;
-        const duplicate = await UserServices.getUserByEmail(email);
+        const { account, password } = req.body;
+        const duplicate = await UserServices.getUserByaccount(account);
         if (duplicate) {
-            throw new Error(`UserName ${email}, Already Registered`)
+            throw new Error(`UserName ${account}, Already Registered`)
         }
-        const response = await UserServices.registerUser(email, password);
+        const response = await UserServices.registerUser(account, password);
 
         res.json({ status: true, success: 'User registered successfully' });
 
@@ -21,26 +21,32 @@ exports.register = async (req, res, next) => {
 exports.login = async (req, res, next) => {
     try {
 
-        const { email, password } = req.body;
+        const { account, password } = req.body;
 
-        if (!email || !password) {
+        if (!account || !password) {
             throw new Error('Parameter are not correct');
         }
-        let user = await UserServices.checkUser(email);
+        let user = await UserServices.checkUser(account);
         if (!user) {
-            throw new Error('User does not exist');
+            // throw new Error('User does not exist');
+            // res.status(404).json({ status: false, error: 'User not found' });
+            res.status(404).json({ status: false, error: 'Tài khoản không tồn tại' });
         }
 
         const isPasswordCorrect = await user.comparePassword(password);
 
         if (isPasswordCorrect === false) {
-            throw new Error(`Username or Password does not match`);
+            // throw new Error(`Username or Password does not match`);
+            // return res.status(401).json({ status: false, error: 'Username or Password does not match' });
+            return res.status(401).json({ status: false, error: 'Tài khoản hoặc mật khẩu không đúng' });
         }
 
         // Creating Token
 
         let tokenData;
-        tokenData = { _id: user._id, email: user.email };
+        console.log(user.account)
+        tokenData = { account: user.account };
+        // tokenData = { _id: 'user._id', account: user.account };
     
 
         const token = await UserServices.generateAccessToken(tokenData,"secret","1h")
