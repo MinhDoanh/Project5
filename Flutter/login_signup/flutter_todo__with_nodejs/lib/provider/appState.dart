@@ -23,4 +23,3 @@ class AppStateProvider with ChangeNotifier {
     notifyListeners();
   }
 }
-

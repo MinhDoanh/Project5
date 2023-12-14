@@ -28563,7 +28563,8 @@ SOFTWARE.
 --------------------------------------------------------------------------------
 intl
 
-Copyright 2013, the Dart project authors. All rights reserved.
+Copyright 2013, the Dart project authors.
+
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
 met:
@@ -28574,7 +28575,7 @@ met:
       copyright notice, this list of conditions and the following
       disclaimer in the documentation and/or other materials provided
       with the distribution.
-    * Neither the name of Google Inc. nor the names of its
+    * Neither the name of Google LLC nor the names of its
       contributors may be used to endorse or promote products derived
       from this software without specific prior written permission.
 
@@ -33083,7 +33084,7 @@ freely, subject to the following restrictions:
 velocity_x
 
 The MIT License (MIT)
-Copyright (c) 2020 Pawan Kumar
+Copyright (c) 2023 Pawan Kumar
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation

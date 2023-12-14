@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo_app/constant/string.dart';
 import 'package:flutter_todo_app/provider/appState.dart';
 import 'package:provider/provider.dart';
 
@@ -53,42 +54,42 @@ class _SidebarState extends State<Sidebar> {
             ),
             ExpansionTile(
               leading: Icon(Icons.menu),
-              title: Text('Quản lý danh mục'),
+              title: Text('$quanLyDanhMuc'),
               children: [
                 ListTile(
-                  title: Text('Danh mục sinh viên'),
+                  title: Text('$danhMucSinhVien'),
                   onTap: () {
-                    context.read<AppStateProvider>().setBreadcrumbs('Quản lý danh mục > Danh mục sinh viên');
+                    context.read<AppStateProvider>().setBreadcrumbs('$quanLyDanhMuc > $danhMucSinhVien');
                   },
                 ),
                 ListTile(
                   title: Text('Danh mục giảng viên'),
                   onTap: () {
-                    context.read<AppStateProvider>().setBreadcrumbs('Quản lý danh mục > Danh mục giảng viên');
+                    context.read<AppStateProvider>().setBreadcrumbs('$quanLyDanhMuc > Danh mục giảng viên');
                   },
                 ),
                 ListTile(
                   title: Text('Danh mục lớp'),
                   onTap: () {
-                    context.read<AppStateProvider>().setBreadcrumbs('Quản lý danh mục > Danh mục lớp');
+                    context.read<AppStateProvider>().setBreadcrumbs('$quanLyDanhMuc > Danh mục lớp');
                   },
                 ),
                 ListTile(
                   title: Text('Danh mục môn học'),
                   onTap: () {
-                    context.read<AppStateProvider>().setBreadcrumbs('Quản lý danh mục > Danh mục môn học');
+                    context.read<AppStateProvider>().setBreadcrumbs('$quanLyDanhMuc > Danh mục môn học');
                   },
                 ),
                 ListTile(
                   title: Text('Danh mục phòng'),
                   onTap: () {
-                    context.read<AppStateProvider>().setBreadcrumbs('Quản lý danh mục > Danh mục phòng');
+                    context.read<AppStateProvider>().setBreadcrumbs('$quanLyDanhMuc > Danh mục phòng');
                   },
                 ),
                 ListTile(
                   title: Text('Danh mục thiết bị'),
                   onTap: () {
-                    context.read<AppStateProvider>().setBreadcrumbs('Quản lý danh mục > Danh mục thiết bị');
+                    context.read<AppStateProvider>().setBreadcrumbs('$quanLyDanhMuc > Danh mục thiết bị');
                   },
                 ),
                 // Add other dropdown items as needed
