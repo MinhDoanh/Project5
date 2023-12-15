@@ -23,7 +23,7 @@ class _DashboardState extends State<Dashboard> {
     // TODO: implement initState
     super.initState();
 
-    AppState appState = AppState(breadcrumbs: 'Quản lý lịch học');
+    AppState appState = AppState(breadcrumbs: 'Quản lý lịch học',students: []);
     Provider.of<AppStateProvider>(context, listen: false).setAppState(appState);
   }
 

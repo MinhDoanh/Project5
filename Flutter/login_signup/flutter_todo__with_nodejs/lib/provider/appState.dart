@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class AppState {
   String breadcrumbs;
+  List<Map<String, dynamic>> students;
 
-  AppState({required this.breadcrumbs});
+  AppState({required this.breadcrumbs, required this.students});
 }
 
 class AppStateProvider with ChangeNotifier {
@@ -17,9 +18,12 @@ class AppStateProvider with ChangeNotifier {
   }
 
   void setBreadcrumbs(String breadcrumbs) {
-    print(breadcrumbs);
     _appState?.breadcrumbs = breadcrumbs;
-    print(_appState?.breadcrumbs);
+    notifyListeners();
+  }
+
+  void setStudents(List<Map<String, dynamic>> students) {
+    _appState?.students = students;
     notifyListeners();
   }
 }

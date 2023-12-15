@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo_app/config.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:flutter_todo_app/provider/appState.dart';
+import 'package:flutter_todo_app/students/studentService.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class DataTableStudent extends StatefulWidget {
   const DataTableStudent({Key? key});
@@ -17,24 +17,27 @@ class _DataTableStudentState extends State<DataTableStudent> {
   @override
   void initState() {
     super.initState();
-    fetchStudents();
+    StudentService.fetchStudents(context);
   }
 
-  Future<void> fetchStudents() async {
-    final response = await http.get(Uri.http(url, getAllStudentAPI));
+  // Future<void> fetchStudents() async {
+  //   final response = await http.get(Uri.http(url, getAllStudentAPI));
 
-    if (response.statusCode == 200) {
-      final data = jsonDecode(response.body) as Map<String, dynamic>;
-      final studentList = data['data'] as List<dynamic>;
-      print("Student list: " + studentList.toString());
+  //   if (response.statusCode == 200) {
+  //     final data = jsonDecode(response.body) as Map<String, dynamic>;
+  //     final studentList = data['data'] as List<dynamic>;
+  //     print("Student list: " + studentList.toString());
 
-      setState(() {
-        students = studentList.cast<Map<String, dynamic>>();
-      });
-    } else {
-      throw Exception('Failed to fetch students');
-    }
-  }
+  //     // setState(() {
+  //     //   students = studentList.cast<Map<String, dynamic>>();
+  //     // });
+
+  //     Provider.of<AppStateProvider>(context, listen: false)
+  //         .setStudents(studentList.cast<Map<String, dynamic>>());
+  //   } else {
+  //     throw Exception('Failed to fetch students');
+  //   }
+  // }
 
   void deleteStudent(int index) {
     // Xử lý logic xóa sinh viên ở hàng tương ứng
@@ -95,7 +98,13 @@ class _DataTableStudentState extends State<DataTableStudent> {
         ),
         // Add other columns as needed
       ],
-      rows: students.asMap().entries.map((entry) {
+      rows: context
+          .watch<AppStateProvider>()
+          .appState!
+          .students
+          .asMap()
+          .entries
+          .map((entry) {
         final index = entry.key;
         final student = entry.value;
 

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_todo_app/config.dart';
+import 'package:flutter_todo_app/students/studentService.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
@@ -24,6 +25,7 @@ class _FromAddStudentState extends State<FromAddStudent> {
   TextEditingController _birthDateController = TextEditingController();
   bool isAddingStudentSuccess = false;
   bool isFormValid = false;
+
 
   @override
   void initState() {
@@ -63,6 +65,7 @@ class _FromAddStudentState extends State<FromAddStudent> {
       print('Lỗi khi thêm sinh viên: ${response.statusCode}');
     }
   }
+
 
   void clearForm() {
     setState(() {
@@ -229,14 +232,15 @@ class _FromAddStudentState extends State<FromAddStudent> {
               await createStudent();
               // Perform form submission or validation
               if (isAddingStudentSuccess) {
+                StudentService.fetchStudents(context);
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text('Thêm sinh viên thành công'),
                     backgroundColor:
                         Colors.green, // Thay đổi màu nền thành màu xanh lá cây
-                        
                   ),
                 );
+
                 clearForm();
               }
             } else {

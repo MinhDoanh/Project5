@@ -6,7 +6,8 @@ exports.createStudent = async (req, res, next) => {
         const { studentId, studentName, classCode, gender, birthDate } = req.body;
         const duplicate = await StudentService.getStudentByStudentID(studentId);
         if (duplicate) {
-            throw new Error(`Student ${studentId}, Already Registered`)
+            throw new Error(`Student ${studentId}, Already Registered`);
+            res.json({ status: true, success: 'StudentID Already' });
         }
         const response = await StudentService.createStudent(studentId, studentName, classCode, gender, birthDate);
 
